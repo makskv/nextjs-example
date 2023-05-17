@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { VehicleType } from '../../types'
 import { LabelAccent } from '../LayoutComponents'
+import { vehicleTypeToString } from '../../utils/vehicleTypeToString'
 
 interface TrailerTypeProps {
 	type: VehicleType
@@ -11,7 +12,7 @@ const TrailerCardType = ({ type }: TrailerTypeProps) => {
 	return (
 		<TrailerTypeComponent>
 			<LabelAccent>
-				{type}
+				{vehicleTypeToString(type)}
 			</LabelAccent>
 		</TrailerTypeComponent>
 
