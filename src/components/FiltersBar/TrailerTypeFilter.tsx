@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { VEHICLE_TYPES_DESCRIPTION } from '../../constants'
 import TrailerTypeFilterItem from './TrailerTypeFilterItem'
 import { useFilters } from '../../context/FiltersProvider'
+import { mediaQuery } from '../../utils/mediaQuery'
 
 const TrailerTypeFilter = () => {
 	const { selectedVehicleTypes, onVehicleTypeSelected } = useFilters()
@@ -30,13 +31,21 @@ const TrailerTypeFilterComponent = styled.div`
   flex-direction: column;
   gap: 16px;
   padding: 23px 16px;
-	border-right: 1px solid var(--color-beige);
-	border-left: 1px solid var(--color-beige);
+  border-top: 1px solid var(--color-beige);
+  border-bottom: 1px solid var(--color-beige);
+
+  ${mediaQuery('mobile')(`
+		border-right: 1px solid var(--color-beige);
+  	border-left: 1px solid var(--color-beige);
+  	border-top: none;
+  	border-bottom: none;
+	`)}
 `
 
 const TrailerTypeFilterItemsList = styled.div`
   display: flex;
-  gap: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
 `
 
 export default TrailerTypeFilter

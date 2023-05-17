@@ -17,8 +17,9 @@ const FiltersBar = () => {
 
 const FiltersBarComponent = styled.div`
   border: 1px solid var(--color-beige);
-  padding: 0 24px;
+  padding: 23px 0;
   display: flex;
+	flex-wrap: wrap;
 
   ${mediaQuery('mobile')(`
 		padding: 0 100px;

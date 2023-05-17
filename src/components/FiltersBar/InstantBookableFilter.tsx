@@ -6,6 +6,7 @@ import Image from 'next/image'
 import tooltipIcon from '../../../public/icons/action.svg'
 import expandIcon from '../../../public/icons/expand.svg'
 import { useFilters } from '../../context/FiltersProvider'
+import { mediaQuery } from '../../utils/mediaQuery'
 
 const InstantBookableFilter = () => {
 	const {instantBookable, toggleInstantBookable} = useFilters()
@@ -26,10 +27,14 @@ const InstantBookableFilter = () => {
 }
 
 const InstantBookableFilterComponent = styled.div`
-  padding: 23px 16px;
+  padding: 23px 16px 0;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+
+  ${mediaQuery('mobile')(`
+  	padding: 23px 0 23px 16px;
+	`)}
 `
 
 const InstantBookableFilterToggle = styled.div`

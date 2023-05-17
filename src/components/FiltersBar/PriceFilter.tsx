@@ -7,6 +7,7 @@ import { PRICE_RANGE_MAX, PRICE_RANGE_MIN } from '../../constants'
 import { useFilters } from '../../context/FiltersProvider'
 import debounce from 'lodash.debounce'
 import PriceInputFilter from './PriceInputFilter'
+import { mediaQuery } from '../../utils/mediaQuery'
 
 type GradientValues = Tuple<number>
 
@@ -98,7 +99,11 @@ const PriceFilterComponent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 23px 16px 23px 0;
+  padding: 0 16px 23px;
+
+  ${mediaQuery('mobile')(`
+		 padding: 23px 16px 23px 0;
+	`)}
 `
 
 interface PriceFilterSliderTrackProps {
