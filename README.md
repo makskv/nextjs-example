@@ -19,7 +19,7 @@ Stránka musí obsahovat:
 Celá kostra zadaní je postavena na [Next.js](https://nextjs.org/docs/getting-started), nicméně znalost Next.js není nutná,
 pokud jste s Next.js ještě nepracovali projekt už je připraven a není nutné nic nastavovat.
 
-Stránku najdete ve složce `/pages/index.js` a na zbytek komponent pak použijte složku `src`
+Stránku najdete ve složce `/pages/index.ts` a na zbytek komponent pak použijte složku `src`
 
 Pro stylování doporučujeme [Styled Components](https://styled-components.com/), opět není nutné nic nastavovat.
 Web by měl být responsivní, breakpoint pro mobil použijte 400px, design pro tablet není třeba.

@@ -7,10 +7,9 @@
 	"extends": [
 		"next/core-web-vitals",
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended"
+		"plugin:@typescript-eslint/recommended"
 	],
 	"rules": {
-		"indent": [2, "tab"]
+		"prettier/prettier": "off"
 	}
 }
