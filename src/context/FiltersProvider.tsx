@@ -4,17 +4,21 @@ import React from 'react/index'
 
 interface FiltersContextProps {
 	selectedVehicleTypes: VehicleType[]
+	instantBookable: boolean
+	toggleInstantBookable: () => void
 	onVehicleTypeSelected: (type: VehicleType) => void
 }
 
 export const FiltersContext = createContext<FiltersContextProps>({
 	selectedVehicleTypes: [],
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	onVehicleTypeSelected: (type) => null
+	onVehicleTypeSelected: (type) => null,
+	instantBookable: false,
+	toggleInstantBookable: () => null
 })
 
 export const FiltersProvider: FC = ({ children }) => {
 	const [selectedVehicleTypes, setSelectedVehicleTypes] = useState<VehicleType[]>([])
+	const [instantBookable, setInstantBookable] = useState(false)
 
 	const onVehicleTypeSelected = useCallback((type: VehicleType) => {
 		setSelectedVehicleTypes(prevState => {
@@ -26,10 +30,16 @@ export const FiltersProvider: FC = ({ children }) => {
 		})
 	}, [])
 
+	const toggleInstantBookable = useCallback(() => {
+		setInstantBookable(prevState => !prevState)
+	}, [])
+
 	return <FiltersContext.Provider
 		value={{
 			onVehicleTypeSelected,
-			selectedVehicleTypes
+			selectedVehicleTypes,
+			instantBookable,
+			toggleInstantBookable
 		}}
 	>
 		{children}
