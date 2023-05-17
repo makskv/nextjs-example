@@ -8,7 +8,7 @@ import Navbar from '../src/components/Navbar'
 const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
 		<PageWrapper>
-			<Navbar/>
+			<Navbar />
 			<Grid>
 				{trailers.map((trailer) => (
 					<TrailerCard key={trailer.id} {...trailer} />

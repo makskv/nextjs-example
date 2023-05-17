@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HeadlineS, Subtitle } from './LayoutComponents'
+import { HeadlineS, Subtitle } from '../LayoutComponents'
 
-import tooltipIcon from '../../public/icons/action.svg'
+import tooltipIcon from '../../../public/icons/action.svg'
 import Image from 'next/image'
 
 interface TrailerCardPriceProps {

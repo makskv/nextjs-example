@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { mediaQuery } from '../util/mediaQuery'
+import { mediaQuery } from '../utils/mediaQuery'
 
 export const Grid = styled.div`
   display: grid;

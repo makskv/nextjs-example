@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { VehicleType } from '../types'
-import { LabelAccent } from './LayoutComponents'
+import { VehicleType } from '../../types'
+import { LabelAccent } from '../LayoutComponents'
 
 interface TrailerTypeProps {
 	type: VehicleType

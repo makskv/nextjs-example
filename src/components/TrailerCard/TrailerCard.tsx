@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Trailer } from '../types'
+import { Trailer } from '../../types'
 import TrailersCarousel from './TrailersCarousel'
 import TrailerCardType from './TrailerCardType'
 import TrailerCardTitle from './TrailerCardTitle'

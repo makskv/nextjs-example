@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import logo from '../../public/icons/logo.svg'
 import styled from 'styled-components'
-import { mediaQuery } from '../util/mediaQuery'
+import { mediaQuery } from '../utils/mediaQuery'
 
 const Navbar = () => {
 	return (

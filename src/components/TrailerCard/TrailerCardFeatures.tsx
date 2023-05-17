@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Trailer } from '../types'
+import { Trailer } from '../../types'
 import TrailerFeaturesIcon from './TrailerFeaturesIcon'
 
-import passengersCapacityLogo from '../../public/icons/passengers-capacity.svg'
-import sleepCapacityLogo from '../../public/icons/sleep-capacity.svg'
-import toilerLogo from '../../public/icons/toilet.svg'
-import showerLogo from '../../public/icons/shower.svg'
+import passengersCapacityLogo from '../../../public/icons/passengers-capacity.svg'
+import sleepCapacityLogo from '../../../public/icons/sleep-capacity.svg'
+import toilerLogo from '../../../public/icons/toilet.svg'
+import showerLogo from '../../../public/icons/shower.svg'
 
 type TrailerCardFeaturesProps = Pick<Trailer, 'toilet' | 'location' | 'sleepCapacity' | 'passengersCapacity' | 'shower'>
 
