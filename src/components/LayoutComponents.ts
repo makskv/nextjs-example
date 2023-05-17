@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-export const Label = styled.span`
-  font-size: 14px;
-  line-height: 16px;
-`
-
 export const Subtitle = styled.span`
   color: var(--color-dark-grey);
 	font-size: 16px;

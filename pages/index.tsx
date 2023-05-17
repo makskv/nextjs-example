@@ -4,13 +4,28 @@ import { TrailerCard } from '../src/components/TrailerCard'
 import { Trailer } from '../src/types'
 import { Grid } from '../src/components/TrailersList'
 import Navbar from '../src/components/Navbar'
+import FiltersBar from '../src/components/FiltersBar/FiltersBar'
+import { useMemo } from 'react'
+import { useFilters } from '../src/context/FiltersProvider'
 
 const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
+	const { selectedVehicleTypes } = useFilters()
+	const filteredTrailers = useMemo(() => {
+		let result = [...trailers]
+
+		if (selectedVehicleTypes.length > 0) {
+			result = result.filter(trailer => selectedVehicleTypes.includes(trailer.vehicleType))
+		}
+
+		return result
+	}, [trailers, selectedVehicleTypes])
+
 	return (
 		<PageWrapper>
 			<Navbar />
+			<FiltersBar />
 			<Grid>
-				{trailers.map((trailer) => (
+				{filteredTrailers.map((trailer) => (
 					<TrailerCard key={trailer.id} {...trailer} />
 				))}
 			</Grid>
