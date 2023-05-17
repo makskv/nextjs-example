@@ -19,6 +19,7 @@ const TrailersCarousel = ({ pictures }: TrailersCarouselProps) => {
 							src={picture}
 							objectFit="cover"
 							alt="trailer image"
+							priority={false}
 						/>
 				</TrailerImageWrapper>
 			))}
