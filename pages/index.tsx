@@ -9,9 +9,9 @@ import { useMemo } from 'react'
 import { useFilters } from '../src/context/FiltersProvider'
 
 const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
-	const { selectedVehicleTypes, instantBookable } = useFilters()
+	const { selectedVehicleTypes, instantBookable, priceRange } = useFilters()
 	const filteredTrailers = useMemo(() => {
-		let result = [...trailers]
+		let result = [...trailers.filter(trailer => trailer.price >= priceRange[0] && trailer.price <= priceRange[1])]
 
 		if (selectedVehicleTypes.length > 0) {
 			result = result.filter(trailer => selectedVehicleTypes.includes(trailer.vehicleType))
@@ -20,8 +20,9 @@ const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
 		if (instantBookable) {
 			result = result.filter(trailer => trailer.instantBookable === instantBookable)
 		}
+
 		return result
-	}, [trailers, selectedVehicleTypes, instantBookable])
+	}, [trailers, selectedVehicleTypes, instantBookable, priceRange])
 
 	return (
 		<PageWrapper>

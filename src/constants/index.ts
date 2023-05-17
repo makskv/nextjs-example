@@ -1,9 +1,4 @@
-import { VehicleType } from '../types'
-
-interface VehicleTypeFilter {
-	type: VehicleType
-	description: string
-}
+import { PriceRange, VehicleTypeFilter } from '../types'
 
 export const VEHICLE_TYPES_DESCRIPTION: VehicleTypeFilter[] = [
 	{
@@ -23,3 +18,7 @@ export const VEHICLE_TYPES_DESCRIPTION: VehicleTypeFilter[] = [
 		description: 'Tažný karavan za vaše auto. Od kapkovitých až po rodinné.'
 	}
 ]
+
+export const PRICE_RANGE_MIN = 100
+export const PRICE_RANGE_MAX = 10000
+export const DEFAULT_PRICE_RANGE: PriceRange = [PRICE_RANGE_MIN, PRICE_RANGE_MAX]
