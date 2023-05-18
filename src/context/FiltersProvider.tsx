@@ -1,6 +1,5 @@
 import { PriceRange, VehicleType } from '../types'
-import { createContext, FC, useCallback, useContext, useState } from 'react'
-import React from 'react/index'
+import React, { createContext, FC, useCallback, useContext, useMemo, useState } from 'react'
 import { DEFAULT_PRICE_RANGE } from '../constants'
 
 interface FiltersContextProps {
@@ -44,15 +43,24 @@ export const FiltersProvider: FC = ({ children }) => {
 		setPriceRange(range)
 	}, [])
 
+	const value = useMemo(() => ({
+		onVehicleTypeSelected,
+		selectedVehicleTypes,
+		instantBookable,
+		toggleInstantBookable,
+		priceRange,
+		handlePriceRangeChanged
+	}), [
+		onVehicleTypeSelected,
+		selectedVehicleTypes,
+		instantBookable,
+		toggleInstantBookable,
+		priceRange,
+		handlePriceRangeChanged
+	])
+
 	return <FiltersContext.Provider
-		value={{
-			onVehicleTypeSelected,
-			selectedVehicleTypes,
-			instantBookable,
-			toggleInstantBookable,
-			priceRange,
-			handlePriceRangeChanged
-		}}
+		value={value}
 	>
 		{children}
 	</FiltersContext.Provider>

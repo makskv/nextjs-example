@@ -9,15 +9,13 @@ interface TrailerCardPriceProps {
 	price: number
 }
 
-const priceFormat = new Intl.NumberFormat('cz-CZ', { style: 'currency', currency: 'CZK', maximumFractionDigits: 0 })
-
 const TrailerCardPrice = ({ price }: TrailerCardPriceProps) => {
 	return (
 		<TrailerCardPriceComponent>
 			<Subtitle>Cena od</Subtitle>
 			<TrailerCardPriceTrailing>
-				<HeadlineS>{priceFormat.format(price)}/den</HeadlineS>
-				<Image src={tooltipIcon} alt="tooltip"/>
+				<HeadlineS>{price.toLocaleString()} Kč/den</HeadlineS>
+				<Image src={tooltipIcon} alt='tooltip' />
 			</TrailerCardPriceTrailing>
 
 		</TrailerCardPriceComponent>

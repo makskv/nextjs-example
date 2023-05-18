@@ -5,11 +5,24 @@ import { Trailer } from '../src/types'
 import { Grid } from '../src/components/TrailersList'
 import Navbar from '../src/components/Navbar'
 import FiltersBar from '../src/components/FiltersBar/FiltersBar'
-import { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useFilters } from '../src/context/FiltersProvider'
+import { Button, LabelButton } from '../src/components/LayoutComponents'
 
-const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
+export const getStaticProps: GetStaticProps<{ initialData: Trailer[] }> = async () => {
+	const trailers = await fetchTrailers()
+
+	return {
+		props: {
+			initialData: trailers
+		}
+	}
+}
+
+const Home = ({ initialData }: InferGetStaticPropsType<typeof getStaticProps>) => {
+	const [trailers, setTrailers] = useState(initialData)
 	const { selectedVehicleTypes, instantBookable, priceRange } = useFilters()
+
 	const filteredTrailers = useMemo(() => {
 		let result = [...trailers.filter(trailer => trailer.price >= priceRange[0] && trailer.price <= priceRange[1])]
 
@@ -24,6 +37,11 @@ const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
 		return result
 	}, [trailers, selectedVehicleTypes, instantBookable, priceRange])
 
+	const handleLoadMore = async () => {
+		const newData = await fetchTrailers()
+		setTrailers(prevState => [...prevState, ...newData])
+	}
+
 	return (
 		<PageWrapper>
 			<Navbar />
@@ -33,6 +51,13 @@ const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
 					<TrailerCard key={trailer.id} {...trailer} />
 				))}
 			</Grid>
+			<ButtonWrapper>
+				<Button onClick={handleLoadMore}>
+					<LabelButton>
+						Načíst další
+					</LabelButton>
+				</Button>
+			</ButtonWrapper>
 		</PageWrapper>
 	)
 }
@@ -40,20 +65,19 @@ const Home = ({ trailers }: InferGetStaticPropsType<typeof getStaticProps>) => {
 const fetchTrailers = async (): Promise<Trailer[]> => {
 	const res = await fetch('http://localhost:3000/api/data')
 	const data: Omit<Trailer, 'id'>[] = (await res.json()).items
-	return data.map((trailer, id) => ({ ...trailer, id }))
-}
-
-export const getStaticProps: GetStaticProps<{ trailers: Trailer[] }> = async () => {
-	const trailers = await fetchTrailers()
-
-	return {
-		props: {
-			trailers
-		}
-	}
+	return data.map((trailer, id) => ({ ...trailer, id: id + Date.now() }))
 }
 
 const PageWrapper = styled.div`
+  padding-bottom: 115px;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+  width: 100%;
 `
 
 export default Home

@@ -46,3 +46,20 @@ export const LabelBodyS = styled.span`
 	line-height: 14px;
 	color: var(--color-dark-grey);
 `
+
+export const LabelButton = styled.span`
+	font-size: 16px;
+	line-height: 1;
+	color: var(--color-white);
+	font-weight: 900;
+	letter-spacing: 0;
+`
+
+export const Button = styled.button`
+	background-color: var(--color-green);
+	border-radius: 8px;
+	padding: 14px 36px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+`

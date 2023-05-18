@@ -11,7 +11,7 @@ interface TrailersCarouselProps {
 const TrailersCarousel = ({ pictures }: TrailersCarouselProps) => {
 	return (
 		<Carousel showStatus={false} showThumbs={false} showIndicators={false}>
-			{pictures.map((picture) => (
+			{pictures.map((picture, index) => (
 				<TrailerImageWrapper key={picture}>
 						<Image
 							layout='fill'
@@ -19,7 +19,7 @@ const TrailersCarousel = ({ pictures }: TrailersCarouselProps) => {
 							src={picture}
 							objectFit="cover"
 							alt="trailer image"
-							priority={false}
+							priority={index === 0}
 						/>
 				</TrailerImageWrapper>
 			))}
