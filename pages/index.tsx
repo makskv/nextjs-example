@@ -8,6 +8,7 @@ import FiltersBar from '../src/components/FiltersBar/FiltersBar'
 import React, { useMemo, useState } from 'react'
 import { useFilters } from '../src/context/FiltersProvider'
 import { Button, LabelButton } from '../src/components/LayoutComponents'
+import Head from 'next/head'
 
 export const getStaticProps: GetStaticProps<{ initialData: Trailer[] }> = async () => {
 	const trailers = await fetchTrailers()
@@ -43,22 +44,33 @@ const Home = ({ initialData }: InferGetStaticPropsType<typeof getStaticProps>) =
 	}
 
 	return (
-		<PageWrapper>
-			<Navbar />
-			<FiltersBar />
-			<Grid>
-				{filteredTrailers.map((trailer) => (
-					<TrailerCard key={trailer.id} {...trailer} />
-				))}
-			</Grid>
-			<ButtonWrapper>
-				<Button onClick={handleLoadMore}>
-					<LabelButton>
-						Načíst další
-					</LabelButton>
-				</Button>
-			</ButtonWrapper>
-		</PageWrapper>
+		<>
+			<Head>
+				<title>Půjčovna přívěsů</title>
+
+				<meta
+					name='description'
+					content='Půjčovna přívěsů - Vaše první volba pro pronájem přívěsů pro různé účely. Prohlížejte si široký výběr přívěsů a rezervujte si pohodlně svůj pronájem.'
+				/>
+			</Head>
+			<PageWrapper>
+				<Navbar />
+				<FiltersBar />
+				<Grid>
+					{filteredTrailers.map((trailer) => (
+						<TrailerCard key={trailer.id} {...trailer} />
+					))}
+				</Grid>
+				<ButtonWrapper>
+					<Button onClick={handleLoadMore}>
+						<LabelButton>
+							Načíst další
+						</LabelButton>
+					</Button>
+				</ButtonWrapper>
+			</PageWrapper>
+		</>
+
 	)
 }
 
