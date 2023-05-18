@@ -14,7 +14,7 @@ const TrailerCardPrice = ({ price }: TrailerCardPriceProps) => {
 		<TrailerCardPriceComponent>
 			<Subtitle>Cena od</Subtitle>
 			<TrailerCardPriceTrailing>
-				<HeadlineS>{price.toLocaleString()} Kč/den</HeadlineS>
+				<HeadlineS>{price.toLocaleString(['cs-CZ'])} Kč/den</HeadlineS>
 				<Image src={tooltipIcon} alt='tooltip' />
 			</TrailerCardPriceTrailing>
 
