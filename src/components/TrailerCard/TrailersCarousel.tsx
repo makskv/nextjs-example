@@ -14,8 +14,8 @@ const TrailersCarousel = ({ pictures }: TrailersCarouselProps) => {
 			{pictures.map((picture, index) => (
 				<TrailerImageWrapper key={picture}>
 						<Image
-							layout='fill'
-							loader={({ src, width }) => `${src}?{width=${width}`}
+							layout="fill"
+							loader={({ src , width}) => `${src}?w=${width}`}
 							src={picture}
 							objectFit="cover"
 							alt="trailer image"
